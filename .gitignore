@@ -1,0 +1,7 @@
+db.sqlite3
+repomix-output.xml
+Flax_Sequence.xlsx
+Downloads - Shortcut.lnk
+__pycache__/
+*.pyc
+/flaxes/migrations/
