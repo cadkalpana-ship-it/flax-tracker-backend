@@ -6,3 +6,4 @@ pyodbc>=5.0
 pillow
 pymysql
 django-environ
+gunicorn
