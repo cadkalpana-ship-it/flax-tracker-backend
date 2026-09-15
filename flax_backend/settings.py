@@ -4,13 +4,26 @@ Django settings for flax_backend project.
 import os
 from pathlib import Path
 
+import environ
+
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "dev-secret-key-change-me"
+env = environ.Env(
+    # set casting and default values
+    DEBUG=(bool, False)
+)
 
-DEBUG = True
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+SECRET_KEY = env('SECRET_KEY', default='fallback-secret-key-for-dev')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]  # tighten this in production
+
+
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -74,11 +87,11 @@ WSGI_APPLICATION = "flax_backend.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'defaultdb'),
-        'USER': os.environ.get('DB_USER', 'avnadmin'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'AVNS_67ll7cHd1m4dczSmr_q'),
-        'HOST': os.environ.get('DB_HOST', 'mysql-1936593e-cadkalpana-1cce.l.aivencloud.com'),
-        'PORT': os.environ.get('DB_PORT', '16025'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },

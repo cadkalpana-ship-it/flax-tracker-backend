@@ -5,3 +5,4 @@ Downloads - Shortcut.lnk
 __pycache__/
 *.pyc
 /flaxes/migrations/
+.env

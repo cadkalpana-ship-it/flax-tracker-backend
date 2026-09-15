@@ -5,3 +5,4 @@ mssql-django>=1.5
 pyodbc>=5.0
 pillow
 pymysql
+django-environ
