@@ -22,6 +22,17 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]  # tighten this in production
 
+# ==============================================================================
+# CROSS-ORIGIN RESOURCE SHARING (CORS) PRODUCTION CONFIGURATION
+# ==============================================================================
+CORS_ALLOWED_ORIGINS = [
+    "https://vercel.app",  # Your production frontend domain link
+    "http://localhost:3000",             # Keeps local testing environments open
+    "http://127.0.0.1:8000",
+]
+
+# Allows secure token verification headers to cross domains seamlessly
+CORS_ALLOW_CREDENTIALS = True
 
 
 
@@ -39,8 +50,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # must be high in the list
     "django.middleware.security.SecurityMiddleware",
-    "corsheaders.middleware.CorsMiddleware",  # must be high in the list
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
