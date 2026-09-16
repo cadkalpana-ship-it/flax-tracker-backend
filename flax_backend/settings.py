@@ -26,7 +26,7 @@ ALLOWED_HOSTS = ["*"]  # tighten this in production
 # CROSS-ORIGIN RESOURCE SHARING (CORS) PRODUCTION CONFIGURATION
 # ==============================================================================
 CORS_ALLOWED_ORIGINS = [
-    "https://flaxapp-one.vercel.app/",  # Your production frontend domain link
+    "https://flaxapp-one.vercel.app",  # Your production frontend domain link
     "http://localhost:3000",             # Keeps local testing environments open
     "http://127.0.0.1:8000",
 ]
